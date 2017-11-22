@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<div class="container-fluid">
+
+		{% block title_area %}
+
+			<h1>
+				{{ title }}
+			</h1>
+
+		{% endblock %}
+
+		{% block posts_area %}
+
+			{% if posts %}
+				<ol>
+					{% for post in posts %}
+						<li>
+							{% include 'components/tease.twig' with {
+								title: post.title,
+								link: post.link,
+								image: post.thumbnail
+							} %}
+						</li>
+					{% endfor %}
+				</ol>
+			{% endif %}
+
+		{% endblock %}
+
+		{% block pagination %}
+
+			{% include 'components/pagination.twig' %}
+
+		{% endblock %}
+
+	</div><!-- /.container-fluid -->
+
+{% endblock %}

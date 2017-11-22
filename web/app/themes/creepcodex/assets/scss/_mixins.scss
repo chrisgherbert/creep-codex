@@ -1,0 +1,185 @@
+/////////////////////////
+// Strip Button Styles //
+/////////////////////////
+
+@mixin remove-button-styles {
+	background: none;
+	border: none;
+	outline: none;
+	padding: 0;
+	margin: 0;
+	-webkit-appearance: none;
+	&:hover, &:focus {
+		outline: none;
+		border: none;
+	}
+}
+
+///////////
+// Links //
+///////////
+
+// Creates white links that fade in opacity when hovered
+@mixin white-links {
+	color: rgba(white, 1);
+	&:hover, &:focus {
+		color: rgba(white, .6);
+	}
+}
+
+// Creates faded white links that turn fully opaque on hover
+@mixin white-links-reverse {
+	color: rgba(white, .6);
+	&:hover, &:focus {
+		color: rgba(white, 1);
+	}
+}
+
+// Creates links that are regular text color and turn link color on hover
+@mixin reverse-links {
+	color: $text-color;
+	&:hover, &:focus {
+		color: $link-color;
+	}
+}
+
+///////////
+// Lists //
+///////////
+
+// Strips <ul> and <ol> formatting
+@mixin strip-ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+// Formats <ul> or <ol> into a horizontal format
+@mixin horizontal-list {
+	@include strip-ul;
+	li {
+		display: inline-block;
+	}
+	a {
+		display: block;
+	}
+}
+
+// Adds CSS3 columns syntax
+@mixin css-columns($count: 3, $gap: 10px, $width: null) {
+	column-count: $count;
+	column-gap: $gap;
+	@if ($width) {
+		column-width: $width;
+	}
+}
+
+//////////////
+// Overflow //
+//////////////
+
+// Prevents long text strings from breaking container
+@mixin word-wrap() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+// Adds overflow ellipsis styling
+@mixin overflow-ellipsis() {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/////////////////
+// Positioning //
+/////////////////
+
+@mixin bg-cover {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@mixin absolute-cover {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+@mixin center-img {
+	display: block;
+	margin: 0 auto;
+}
+
+@mixin vertical-align($position: relative) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+///////////////////
+// Media Queries //
+///////////////////
+
+/* Values should be changed in _variables.scss if desired */
+
+/* 1200px and up */
+@mixin mq-large-min {
+	@media (min-width: #{$screen-lg-min}) {
+		@content;
+	}
+}
+
+/* Up to 1199px */
+@mixin mq-medium-max {
+	@media(max-width: #{$screen-md-max}) {
+		@content;
+	}
+}
+
+/* 992 and up */
+@mixin mq-medium-min {
+	@media(min-width: #{$screen-md-min}) {
+		@content;
+	}
+}
+
+/* Up to 991 */
+@mixin mq-small-max {
+	@media(max-width: #{$screen-sm-max}) {
+		@content;
+	}
+}
+
+/* 768 and up */
+@mixin mq-small-min {
+	@media(min-width: #{$screen-sm-min}) {
+		@content;
+	}
+}
+
+/* Up to 767 */
+@mixin mq-xsmall-max {
+	@media(max-width: #{$screen-xs-max}) {
+		@content;
+	}
+}
+
+/* 480 and up */
+@mixin mq-xsmall-min {
+	@media(min-width: #{$screen-xs-min}) {
+		@content;
+	}
+}
+
+/* Up to 479 */
+@mixin mq-tiny-max {
+	@media(max-width: ($screen-xs-min - 1)) {
+		@content;
+	}
+}

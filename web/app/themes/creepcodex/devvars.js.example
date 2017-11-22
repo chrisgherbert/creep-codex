@@ -1,0 +1,10 @@
+/**
+ * Example devvars.js file
+ */
+
+ module.exports = {
+
+	proxy: 'websitename.local', /* put in your local development url */
+	port: 3000 /* set a new port to not conflict with other projects */
+
+ };

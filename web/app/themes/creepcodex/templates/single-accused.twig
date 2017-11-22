@@ -1,0 +1,232 @@
+{% extends 'single.twig' %}
+
+{% block single_main_content %}
+
+	<div class="profile-main-content">
+
+		<div class="container-fluid">
+
+			<div class="row">
+
+				<div class="col-sm-4">
+
+					<div class="profile-sidebar">
+
+						<div class="profile-image">
+
+							{% if post.thumbnail %}
+
+								<img src="{{ post.thumbnail.src('large') }}" alt="{{ post.thumbnail.alt|default('Profile Image') }}" class="profile-image__img">
+
+							{% else %}
+
+								<div class="profile-image__placeholder"></div>
+
+							{% endif %}
+
+							{% if post.thumbnail.caption %}
+
+								<div class="profile-image__caption">
+									{{ post.thumbnail.caption }}
+								</div>
+
+							{% endif %}
+
+						</div>
+
+					</div>
+
+				</div><!-- /.col-sm-4 -->
+
+				<div class="col-sm-8">
+
+					<div class="profile-main-column">
+
+						<div class="profile-header">
+
+							<h1 class="profile-title">
+
+								{{ post.title }}
+
+								{% if post.job_title %}
+
+									<div class="profile-subtitle">
+										{{ post.job_title }}
+									</div>
+
+								{% endif %}
+
+							</h1>
+
+						</div>
+
+						<div class="profile-meta">
+
+							{% if post.aka %}
+								<div class="profile-meta__item">
+									<div class="profile-meta__key">
+										AKA:
+									</div>
+									<div class="profile-meta__value">
+										{{ post.aka }}
+									</div>
+								</div>
+							{% endif %}
+
+							{% if post.terms('industry') %}
+								<div class="profile-meta__item">
+									<div class="profile-meta__key">
+										Industry:
+									</div>
+									<div class="profile-meta__value">
+										{{ post.terms('industry')|join(', ') }}
+									</div>
+								</div>
+							{% endif %}
+
+							{% if post.allegation_short %}
+								<div class="profile-meta__item">
+									<div class="profile-meta__key">
+										Allegations Summary:
+									</div>
+									<div class="profile-meta__value">
+										{{ post.allegation_short }}
+									</div>
+								</div>
+							{% endif %}
+
+							{% if post.terms('victim-gender') %}
+								<div class="profile-meta__item">
+									<div class="profile-meta__key">
+										Victim Gender:
+									</div>
+									<div class="profile-meta__value">
+										{{ post.terms('victim-gender')|join(', ') }}
+									</div>
+								</div>
+							{% endif %}
+
+						</div>
+
+						{% if post.content %}
+							<div class="profile-content the-content">
+								{{ post.content }}
+							</div>
+						{% endif %}
+
+						{% if post.get_external_links_info %}
+
+							<h5 class="section-heading">
+								References
+							</h5>
+
+							<ul class="profile-links">
+
+								{% for link in post.get_external_links_info %}
+
+									<li class="profile-links__item">
+
+										<a class="profile-links__link" href="{{ link.url }}">
+
+											{% if link.title %}
+
+												{{ link.title }}
+
+											{% else %}
+
+												{{ link.url }}
+
+											{% endif %}
+
+										</a>
+
+										{% if link.providerName %}
+											({{ link.providerName }}{% if link.publishedDate %} - {{ link.publishedDate }}{% endif %})
+										{% endif %}
+
+									</li>
+
+								{% endfor %}
+
+							</ul>
+
+						{% endif %}
+
+					</div>
+
+				</div>
+
+			</div><!-- /.row -->
+
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block single_footer %}
+
+	{% if more_accused %}
+
+		<div class="single-footer">
+
+			<div class="container-fluid">
+
+				<h5 class="section-heading">
+					<i class="fa fa-user fa-list light-icon"></i> &nbsp;
+					More Profiles
+				</h5>
+
+				<div class="person-teases">
+
+					{% for accused in more_accused %}
+
+						<div class="person-tease media">
+
+							<div class="media-left pull-left">
+
+								<a href="{{ accused.link }}">
+									<div class="person-tease__img" {% if accused.thumbnail %} style="background-image: url({{ accused.thumbnail.src('thumbnail') }})" {% endif %}></div>
+								</a>
+
+							</div>
+
+							<div class="media-body">
+
+								<h4 class="person-tease__title">
+
+									<div class="person-tease__title-text">
+										<a href="{{ accused.link }}">
+											{{ accused.title }}
+										</a>
+									</div>
+
+									{% if accused.job_title %}
+										<div class="person-tease__subtitle">
+											{{ accused.job_title }}
+										</div>
+									{% endif %}
+
+								</h4>
+
+								{% if accused.content or accused.allegation_short %}
+									<div class="person-tease__excerpt">
+										{{ accused.allegation_short|default(accused.get_preview(15, '', '')) }}
+									</div>
+								{% endif %}
+
+							</div>
+
+						</div>
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{% endif %}
+
+{% endblock %}

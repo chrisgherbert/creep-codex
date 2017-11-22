@@ -1,0 +1,83 @@
+{
+  "name": "chrisgherbert/gropebook",
+  "type": "project",
+  "license": "MIT",
+  "description": "The encyclopedia of public figures accused of sexual assault & harassment",
+  "homepage": "http://www.gropebook.com",
+  "authors": [
+    {
+      "name": "Chris Herbert",
+      "email": "chris@chrisgherbert.com",
+      "homepage": "http://chrisgherbert.com"
+    }
+  ],
+  "config": {
+    "preferred-install": "dist"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/bermanco/extended-timber-classes.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/bermanco/cmb2-metatabs-options.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/bermanco/youtube-video.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/bermanco/wordpress-image-download.git"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "5.6.4",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
+        },
+        "require": {
+          "philippbaschke/acf-pro-installer": "^1.0",
+          "composer/installers": "^1.0"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "^1.4",
+    "vlucas/phpdotenv": "^2.0.1",
+    "oscarotero/env": "^1.1.0",
+    "bermanco/bac-timber-classes": "~1.0",
+    "bermanco/cmb2-metatabs-options": "~2.0",
+    "bermanco/youtube-video": "^2.1",
+    "bermanco/wordpress-image-download": "~2.0",
+    "wpackagist-plugin/posts-to-posts": "^1.6",
+    "webdevstudios/cmb2": "2.2.4",
+    "webdevstudios/cpt-core": "^1.0",
+    "webdevstudios/taxonomy_core": "^0.2.4",
+    "advanced-custom-fields/advanced-custom-fields-pro": "^5.6",
+    "embed/embed": "^3.2",
+    "addwiki/mediawiki-api": "^0.7.1"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin", "type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    }
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpcs"
+    ]
+  }
+}

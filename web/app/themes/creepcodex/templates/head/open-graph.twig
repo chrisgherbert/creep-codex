@@ -1,0 +1,4 @@
+<!-- Open Graph -->
+{% for item in open_graph %}
+	<meta property="{{ item.key }}" content="{{ item.value|escape('html_attr') }}">
+{% endfor %}

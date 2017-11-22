@@ -1,0 +1,52 @@
+{% block html_head_container %}
+
+	{% include 'head/html-header.twig' %}
+
+	{% block head %}
+	{% endblock %}
+
+	{% if open_graph %}
+		{% include 'head/open-graph.twig' with {'open_graph': open_graph} only %}
+	{% endif %}
+
+	{% if twitter_cards %}
+		{% include 'head/twitter-cards.twig' with {'twitter_cards': twitter_cards} only %}
+	{% endif %}
+
+	{% if schema %}
+		<!-- Schema.org Data -->
+		{{ schema }}
+	{% endif %}
+
+	{{ site_options.tracking_codes|raw }}
+
+	</head>
+
+{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+
+		{% include 'components/mobile-menu.twig' %}
+
+		{% block header_container %}
+			{% include 'header/header.twig' %}
+		{% endblock %}
+
+		<main id="main" role="main" class="main">
+
+			{% block content %}
+				Sorry, nothing here.
+			{% endblock %}
+
+		</main>
+
+		{% block footer_container %}
+
+			{% include 'footer/footer.twig' %}
+
+			{{ function('wp_footer') }}
+
+		{% endblock %}
+
+	</body>
+</html>

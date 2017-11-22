@@ -1,0 +1,11 @@
+/theme_dist
+devvars.js
+/vendor
+
+# Package Managers
+bower_components
+node_modules
+npm-debug.log
+
+# Other
+.DS_Store

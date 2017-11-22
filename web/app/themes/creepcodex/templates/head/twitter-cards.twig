@@ -1,0 +1,4 @@
+<!-- Twitter Cards -->
+{% for item in twitter_cards %}
+	<meta name="{{ item.key|escape('html_attr') }}" content="{{ item.value|escape('html_attr') }}">
+{% endfor %}

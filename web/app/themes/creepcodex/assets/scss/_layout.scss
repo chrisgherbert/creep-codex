@@ -1,0 +1,44 @@
+////////////
+// Module //
+////////////
+
+.l-module {
+	margin-bottom: $spacing;
+}
+
+///////////////////
+// Media Element //
+///////////////////
+
+.l-media {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	@include mq-xsmall-min {
+		flex-direction: row;
+	}
+}
+
+.l-media--center { align-items: center; }
+
+.l-media__body {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 0%;
+}
+
+.l-media__left {
+	order: 0;
+	margin-bottom: $spacing/2;
+	@include mq-xsmall-min {
+		margin-bottom: 0;
+		margin-right: $spacing/2;
+	}
+}
+
+.l-media__right {
+	order: 1;
+	@include mq-xsmall-min {
+		margin-left: $spacing/2;
+	}
+}

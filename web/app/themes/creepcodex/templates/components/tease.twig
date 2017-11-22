@@ -1,0 +1,85 @@
+{# sample options:
+	classes: tease--article,
+	image: post.thumbnail, (TimberImage object)
+	image_height: 250,
+	image_width: 187,
+	placeholder: theme.link ~ '/assets/img/placeholder/placeholder-455-262.png,
+	overline: post.get_overline,
+	title: post.title,
+	underline: post.get_underline,
+	link: post.link,
+	content: post.content,
+	byline: post.get_byline
+	heading: 3,
+#}
+
+{# Defaults #}
+{% if heading is not defined %}
+	{% set heading = 4 %}
+{% endif %}
+
+{# Image defaults #}
+{% if image_height is not defined %}
+	{% set image_height = 262 %}
+{% endif %}
+{% if image_width is not defined %}
+	{% set image_width = 455 %}
+{% endif %}
+
+<article class="tease {{ classes }}">
+
+	{% block tease_interior %}
+
+		{% if overline %}
+			<div class="tease__overline">
+				{{ overline }}
+			</div>
+		{% endif %}
+
+		{% if image.src or placeholder %}
+			<a href="{{ link }}">
+				{% if image.src %}
+					<img class="tease__image" src="{{ image.src('large')|resize(image_width, image_height, 'center') }}" alt="{{ image.alt }}">
+				{% elseif placeholder %}
+					<img
+						class="tease__image"
+						src="{{ placeholder }}"
+						alt=""
+						{% if image_width %}
+							width="{{ image_width }}"
+							style="width: {{ image_width }}px"
+						{% endif %}
+					>
+				{% endif %}
+			</a>
+		{% endif %}
+
+		{% if title %}
+			<h{{ heading }} class="tease__title">
+				<a href="{{ link }}">
+					{{ title }}
+				</a>
+			</h{{ heading }}>
+		{% endif %}
+
+		{% if underline %}
+			<div class="tease__underline">
+				{{ underline }}
+			</div>
+		{% endif %}
+
+		{% if content %}
+			<div class="tease__content">
+				{{ content }}
+			</div>
+		{% endif %}
+
+		{% if byline %}
+			<div class="tease__byline">
+				{{ byline }}
+			</div><!-- /.tease__byline -->
+		{% endif %}
+
+	{% endblock %}
+
+</article>

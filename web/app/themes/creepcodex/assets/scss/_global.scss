@@ -1,0 +1,146 @@
+///////////////////
+// Base Elements //
+///////////////////
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	font-weight: 500;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Strip all ul's */
+ul {
+	@include strip-ul;
+}
+
+a {
+	transition: $transition;
+}
+
+/////////////////////////
+// Bootstrap Overrides //
+/////////////////////////
+
+.container-fluid {
+	max-width: $container-large-desktop;
+}
+
+//////////////////////////
+// Bootstrap Extensions //
+//////////////////////////
+
+.hidden-xxs {
+	@include mq-tiny-max {
+		display: none !important;
+	}
+}
+
+.visible-xxs {
+	@include mq-xsmall-min {
+		display: block !important;
+	}
+}
+
+////////////////////////
+// WordPress Elements //
+////////////////////////
+
+/**
+ * Wrapper around wordpress post content for common formatting
+ * and readability
+ */
+.the-content {
+	p,ul,ol {
+		margin-bottom: 1em;
+	}
+	ul,ol {
+		line-height: 2em;
+		padding-left: 2em;
+	}
+	ul {
+		list-style-type: disc;
+	}
+}
+
+/* WordPress content images default classes */
+.alignleft {
+	float: left;
+	text-align: left;
+	margin-bottom: $spacing/3;
+	margin-right: $spacing/3;
+}
+
+.alignright {
+	float: right;
+	text-align: right;
+	margin-bottom: $spacing/3;
+	margin-left: $spacing/3;
+}
+
+.aligncenter {
+	display: block;
+	text-align: center;
+	margin: 0 auto $spacing/3;
+}
+
+.wp-caption img,
+.wp-caption {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	position: relative;
+}
+
+.wp-caption-text {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 11px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-weight: 400;
+}
+
+img.size-full, img.size-large {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+}
+
+/**
+ * Contact Form 7
+ */
+
+div.wpcf7-response-output {
+	@extend .alert;
+}
+
+div.wpcf7-mail-sent-ok {
+	@extend .alert-success;
+}
+
+div.wpcf7-validation-errors {
+	@extend .alert-warning;
+}
+
+div.wpcf7-mail-sent-ng {
+	@extend .alert-danger;
+}
+
+span.wpcf7-form-control-wrap {
+	display: block;
+}
+
+span.wpcf7-not-valid-tip {
+	font-family: $font-family-sans-serif;
+}

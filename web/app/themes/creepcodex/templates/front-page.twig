@@ -1,0 +1,71 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if recent_accused %}
+
+		<div class="section">
+
+			<div class="container-fluid">
+
+				<div class="home-recent">
+
+					<h5 class="section-heading">
+
+						<div class="section-heading__text">
+							<i class="fa fa-clock-o fa-lg light-icon"></i> Recent Additions
+						</div>
+
+						<div class="section-heading__links">
+							<a class="section-heading__link" href="/accused/">
+								+ See All Accused
+							</a>
+						</div>
+
+					</h5>
+
+					<div class="person-cards">
+
+						{% for person in recent_accused %}
+
+							<a href="{{ person.link }}" class="person-card">
+
+								<div class="person-card__image" {% if person.thumbnail %} style="background-image: url('{{ person.thumbnail.src('medium') }}')" {% endif %}></div>
+
+								{% if person.terms('industry') %}
+
+									<div class="person-card__tag">
+										{{ person.terms('industry')[0] }}
+									</div>
+
+								{% endif %}
+
+								<div class="person-card__content">
+
+									<h3 class="person-card__title">
+										{{ person.title }}
+									</h3>
+
+									{% if person.job_title %}
+										<div class="person-card__subtitle">
+											{{ person.job_title }}
+										</div>
+									{% endif %}
+
+								</div>
+
+							</a>
+
+						{% endfor %}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+<div class="mobile-drawer" id="mobileDrawer">
+
+	<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+
+		<button class="mobile-menu__close" id="mobileMenuClose" aria-controls="mobileMenu">
+			<i class="fa fa-close" aria-hidden="true"></i>
+			<span class="sr-only">Close Menu</span>
+		</button>
+
+		{% if mobile_menu %}
+
+			<ul class="mobile-menu__list">
+
+				{% for item in mobile_menu.items %}
+
+					<li class="mobile-menu__item {{ item.classes|join(' ') }}">
+
+						<a class="mobile-menu__link" href="{{ item.url }}">
+							{{ item.title }}
+						</a>
+
+					</li>
+
+				{% endfor %}
+
+			</ul>
+
+		{% endif %}
+
+		<form class="mobile-menu__search" method="GET" action="{{ site.url }}">
+			<div class="form-group">
+				<input class="form-control mobile-menu__search-input" type="text" name="s" placeholder="Search">
+			</div><!-- /.form-group -->
+			<button class="sr-only" type="submit">Search</button>
+		</form>
+
+	</nav>
+
+</div>
