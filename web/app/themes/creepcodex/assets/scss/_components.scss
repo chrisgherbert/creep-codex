@@ -459,7 +459,11 @@
 }
 
 .profile-meta__item {
-	margin-bottom: 0.5em;
+	padding: 5px;
+	border-bottom: 1px solid #ccc;
+	&:first-child {
+		border-top: 1px solid #ccc;
+	}
 }
 
 .profile-meta__key {
