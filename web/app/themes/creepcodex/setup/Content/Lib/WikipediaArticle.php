@@ -78,7 +78,16 @@ class WikipediaArticle {
 		$parts = explode('/wiki/', $article_url);
 
 		if (count($parts) == 2){
-			return urldecode($parts[1]);
+
+			$article = urldecode($parts[1]);
+
+			// Remove hash
+			if (strpos($article, '#')){
+				$article = explode('#', $article)[0];
+			}
+
+			return $article;
+
 		}
 
 	}
