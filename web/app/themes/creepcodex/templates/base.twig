@@ -13,12 +13,14 @@
 		{% include 'head/twitter-cards.twig' with {'twitter_cards': twitter_cards} only %}
 	{% endif %}
 
-	{% if schema %}
-		<!-- Schema.org Data -->
-		<script type="application/ld+json">
-			{{ schema|json_encode }}
-		</script>
-	{% endif %}
+	{% block schema %}
+		{% if schema %}
+			<!-- Schema.org Data -->
+			<script type="application/ld+json">
+				{{ schema|json_encode }}
+			</script>
+		{% endif %}
+	{% endblock %}
 
 	{{ site_options.tracking_codes|raw }}
 
