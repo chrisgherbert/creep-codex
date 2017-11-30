@@ -5,6 +5,17 @@
 
 $context = Timber::get_context();
 
+$context['schema'] = array(
+	'@context' => 'http://schema.org',
+	'@type' => 'WebSite',
+	'url' => get_home_url(),
+	'potentialAction' => array(
+		'@type' => 'SearchAction',
+		'target' => get_home_url() . '?s={search_term_string}',
+		'query-input' => 'required name=search_term_string'
+	)
+);
+
 // Set special OG tags for the home page
 $context['open_graph'] = array(
 	array(

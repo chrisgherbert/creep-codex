@@ -15,7 +15,9 @@
 
 	{% if schema %}
 		<!-- Schema.org Data -->
-		{{ schema }}
+		<script type="application/ld+json">
+			{{ schema|json_encode }}
+		</script>
 	{% endif %}
 
 	{{ site_options.tracking_codes|raw }}
