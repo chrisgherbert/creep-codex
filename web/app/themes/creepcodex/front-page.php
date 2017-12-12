@@ -40,7 +40,7 @@ $context['open_graph'] = array(
 $context['recent_accused'] = Timber::get_posts(
 	array(
 		'post_type' => 'accused',
-		'posts_per_page' => 100
+		'posts_per_page' => 40
 	),
 	Content\Config::post_type_classes()
 );
