@@ -1,0 +1,49 @@
+{% extends "index.twig" %}
+
+{% block title_area %}
+
+	<h1 class="page-title index-page-title">
+		{{ title }}
+		{% if pagination.current > 1 %}
+			<div class="page-title__page-number">
+				(page {{ pagination.current }})
+			</div>
+		{% endif %}
+	</h1>
+
+{% endblock %}
+
+{% block posts_area %}
+
+	<div class="filter-buttons">
+
+		<a href="/accused/" class="filter-button {% if not query.industry %} active {% endif %}">All</a>
+
+		{% for industry in industries %}
+
+			<a class="filter-button {% if query.industry == industry.slug %} active {% endif %}" href="/accused/?industry={{ industry.slug }}">
+				{{ industry.name }}
+			</a> 
+
+		{% endfor %}
+
+	</div>
+
+	<div class="person-teases">
+
+		{% for post in posts %}
+
+			{% include 'components/person-tease.twig' with {
+				title: post.title,
+				link: post.link,
+				thumbnail: post.thumbnail,
+				job_title: post.job_title,
+				allegation_short: post.allegation_short,
+				excerpt: post.get_preview(12, '', '')
+			} only %}
+
+		{% endfor %}
+
+	</div>
+
+{% endblock %}
