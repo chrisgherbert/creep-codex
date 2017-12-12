@@ -37,6 +37,49 @@ class Accused extends Post {
 
 	}
 
+	public function get_open_graph_data(){
+
+		$data = array(
+			array(
+				'key' => 'og:title',
+				'value' => $this->get_page_title()
+			),
+			array(
+				'key' => 'og:type',
+				'value' => 'profile'
+			),
+			array(
+				'key' => 'og:description',
+				'value' => $this->content() ?? $this->meta('allegation_short')
+			),
+			array(
+				'key' => 'og:url',
+				'value' => $this->link()
+			)
+		);
+
+		if ($this->thumbnail()){
+			$data[] = array(
+				'key' => 'og:image',
+				'value' => $this->thumbnail()->src('large')
+			);
+		}
+
+		return $data;
+
+	}
+
+	public function get_page_title(){
+
+		if ($this->meta('allegation_short')){
+			return $this->post_title . ' - Accused of ' . $this->meta('allegation_short');
+		}
+		else {
+			return $this->title();
+		}
+
+	}
+
 	public function get_external_links(){
 
 		$data = get_field('external_source_urls', $this->ID);

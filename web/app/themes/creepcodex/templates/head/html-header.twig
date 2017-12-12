@@ -6,7 +6,9 @@
 <head>
 	<meta charset="{{site.charset}}" />
 		<title>
-			{% if wp_title %}
+			{% if post.get_page_title %}
+				{{ post.get_page_title }} - {{ site.name }}
+			{% elseif wp_title %}
 				{{ wp_title }} - {{ site.name }}
 			{% else %}
 				{{ site.name }}
