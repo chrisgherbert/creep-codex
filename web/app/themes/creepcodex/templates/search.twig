@@ -1,0 +1,45 @@
+{% extends "index.twig" %}
+
+{% block title_area %}
+
+	<h1 class="page-title">
+		{{ title }}
+		{% if pagination.current > 1 %}
+			<div class="page-title__page-number">
+				(page {{ pagination.current }})
+			</div>
+		{% endif %}
+	</h1>
+
+{% endblock %}
+
+{% block posts_area %}
+
+	{% if posts %}
+
+		<div class="person-teases">
+
+			{% for post in posts %}
+
+				{% include 'components/person-tease.twig' with {
+					title: post.title,
+					link: post.link,
+					thumbnail: post.thumbnail,
+					job_title: post.job_title,
+					allegation_short: post.allegation_short,
+					excerpt: post.get_preview(12, '', '')
+				} only %}
+
+			{% endfor %}
+
+		</div>
+
+	{% else %}
+
+		<div class="alert alert-danger">
+			No matches
+		</div>
+
+	{% endif %}
+
+{% endblock %}
