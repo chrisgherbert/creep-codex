@@ -64,3 +64,15 @@ remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
+
+// Order accused archive by name
+add_action('pre_get_posts', function($query){
+
+	if (is_post_type_archive('accused') && !is_admin()) {
+
+		$query->set('orderby', 'title');
+		$query->set('order','ASC');
+
+	}
+
+});
