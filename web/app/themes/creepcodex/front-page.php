@@ -30,6 +30,10 @@ $context['open_graph'] = array(
 		'key' => 'og:description',
 		'value' => get_option('blogdescription'),
 	),
+	array(
+		'key'  => 'og:image',
+		'value' => get_template_directory_uri() . '/assets/img/open-graph-default.png'
+	)
 );
 
 // Pull in current posts
