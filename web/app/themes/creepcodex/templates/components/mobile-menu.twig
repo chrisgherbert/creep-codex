@@ -30,7 +30,8 @@
 		<form class="mobile-menu__search" method="GET" action="{{ site.url }}">
 			<div class="form-group">
 				<input class="form-control mobile-menu__search-input" type="text" name="s" placeholder="Search">
-			</div><!-- /.form-group -->
+				<input type="hidden" name="post_type" value="accused">
+			</div>
 			<button class="sr-only" type="submit">Search</button>
 		</form>
 
