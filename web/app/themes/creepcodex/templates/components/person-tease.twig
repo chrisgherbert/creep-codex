@@ -1,0 +1,37 @@
+<div class="person-tease media">
+
+	<div class="media-left pull-left">
+
+		<a href="{{ link }}">
+			<div class="person-tease__img" {% if thumbnail %} style="background-image: url({{ thumbnail.src('thumbnail') }})" {% endif %}></div>
+		</a>
+
+	</div>
+
+	<div class="media-body">
+
+		<h4 class="person-tease__title">
+
+			<div class="person-tease__title-text">
+				<a href="{{ link }}">
+					{{ title }}
+				</a>
+			</div>
+
+			{% if job_title %}
+				<div class="person-tease__subtitle">
+					{{ job_title }}
+				</div>
+			{% endif %}
+
+		</h4>
+
+		{% if excerpt or allegation_short %}
+			<div class="person-tease__excerpt">
+				{{ allegation_short|default(excerpt) }}
+			</div>
+		{% endif %}
+
+	</div>
+
+</div>
