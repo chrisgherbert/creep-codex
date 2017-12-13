@@ -97,6 +97,13 @@ class CustomFields {
 			'desc' => 'URL of the person\'s Wikipedia profile.  With this the site may be able to automatically pull a photo with an appropriate attribution notice.'
 		));
 
+		$cmb2->add_field(array(
+			'id' => 'tmdb_url',
+			'name' => 'The Movie DB URL',
+			'type' => 'text_url',
+			'desc' => 'URL of the person\'s profile on <a target="_blank" href="https://www.themoviedb.org">The Movie DB</a>. The site will use this to pull in film/TV credits.'
+		));
+
 	}
 
 	public function accused(){

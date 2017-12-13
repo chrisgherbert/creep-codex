@@ -129,46 +129,126 @@
 						</div>
 
 						{% if post.content %}
-							<article class="profile-content the-content">
-								{{ post.content }}
-							</article>
+
+							<div class="profile-section">
+
+								<article class="profile-content the-content">
+									{{ post.content }}
+								</article>
+
+							</div>
+
 						{% endif %}
 
 						{% if post.get_external_links_info %}
 
-							<h5 class="section-heading">
-								References
-							</h5>
+							<div class="profile-section">
 
-							<ul class="profile-links">
+								<h5 class="section-heading">
+									References
+								</h5>
 
-								{% for link in post.get_external_links_info %}
+								<ul class="profile-links">
 
-									<li class="profile-links__item">
+									{% for link in post.get_external_links_info %}
 
-										<a class="profile-links__link" href="{{ link.url }}">
+										<li class="profile-links__item">
 
-											{% if link.title %}
+											<a class="profile-links__link" href="{{ link.url }}">
 
-												{{ link.title }}
+												{% if link.title %}
 
-											{% else %}
+													{{ link.title }}
 
-												{{ link.url }}
+												{% else %}
 
+													{{ link.url }}
+
+												{% endif %}
+
+											</a>
+
+											{% if link.providerName %}
+												({{ link.providerName }}{% if link.publishedDate %} - {{ link.publishedDate }}{% endif %})
 											{% endif %}
 
-										</a>
+										</li>
 
-										{% if link.providerName %}
-											({{ link.providerName }}{% if link.publishedDate %} - {{ link.publishedDate }}{% endif %})
-										{% endif %}
+									{% endfor %}
 
-									</li>
+								</ul>
 
-								{% endfor %}
+							</div>
 
-							</ul>
+						{% endif %}
+
+						{% if post.get_tmdb_cast_credits %}
+
+							<div class="profile-section">
+
+								<h5 class="section-heading">
+									<div class="section-heading__text">
+										Filmography
+									</div>
+									<div class="section-heading__aside">
+										as cast member
+									</div>
+								</h5>
+
+								<table class="table profile-filmography profile-filmography--cast">
+
+									<tbody>
+
+										{% for item in post.get_tmdb_cast_credits %}
+
+											<tr class="profile-meta__item">
+												<td class="profile-filmography__title-cell">
+
+													<h5 class="profile-filmography__title">
+
+														<a target="_blank" href="{{ item.tmdb_url }}">
+															{{ item.title }}
+														</a>
+
+														{% if item.media_type == 'tv' %}
+															{% if item.episode_count %}
+																{% if item.episode_count == 1 %}
+																	<small>(TV Series - {{ item.episode_count }} Episode)</small>
+																{% else %}
+																	<small>(TV Series - {{ item.episode_count }} Episodes)</small>
+																{% endif %}
+															{% else %}
+																<small>(TV Series)</small>
+															{% endif %}
+														{% endif %}
+
+													</h5>
+
+													{% if item.character %}
+														<div class="profile-filmography__details">
+															{{ item.character }}
+														</div>
+													{% endif %}
+
+												</td>
+
+												<td class="profile-filmography__year-cell">
+													{% if item.release_date %}
+														<div class="profile-filmography__year">
+															{{ item.release_date|date('Y') }}
+														</div>
+													{% endif %}
+												</td>
+
+											</tr>
+
+										{% endfor %}
+
+									</tbody>
+
+								</table>
+
+							</div>
 
 						{% endif %}
 

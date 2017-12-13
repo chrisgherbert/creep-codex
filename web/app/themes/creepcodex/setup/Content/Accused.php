@@ -3,6 +3,7 @@
 namespace Content;
 
 use Embed\Embed;
+use Content\Lib\TMDBPerson;
 
 class Accused extends Post {
 
@@ -34,6 +35,22 @@ class Accused extends Post {
 		}
 
 		return $data;
+
+	}
+
+	public function get_tmdb_cast_credits(){
+
+		if ($tmdb_url = $this->meta('tmdb_url')){
+
+			$tmdb_data = TMDBPerson::get_by_url($tmdb_url);
+
+			return $tmdb_data->get_processed_cast_credits();
+
+		}
+
+	}
+
+	public function get_tmdb_crew_credits(){
 
 	}
 
