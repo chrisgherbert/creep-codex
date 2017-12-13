@@ -42,10 +42,11 @@
 }
 
 .section-heading__aside {
-	font-weight: 500;
-	text-transform: none;
+	font-weight: 400;
+	font-family: $font-family-condensed;
 	font-size: $font-size-small;
-	color: $gray;
+	color: $gray-light;
+	letter-spacing: 0.5px;
 }
 
 .section-heading__links {

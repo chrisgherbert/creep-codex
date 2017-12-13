@@ -49,7 +49,7 @@ class TMDBPerson {
 			return array(
 				'title' => $item['title'] ?? $item['name'],
 				'id' => $item['id'] ?? '',
-				'character' => $item['character'] ?? '',
+				'role' => $item['character'] ?? '',
 				'media_type' => $item['media_type'] ?? '',
 				'release_date' => $item['release_date'] ?? $item['first_air_date'],
 				'tmdb_url' => self::create_tmdb_credit_url($item['id'], $item['media_type']),
@@ -67,7 +67,28 @@ class TMDBPerson {
 
 	public function get_processed_crew_credits(){
 
-		// to do
+		$raw_credits = $this->get_combined_credits();
+
+		$raw_crew = $raw_credits['crew'] ?? false;
+
+		$processed_crew = array_map(function($item){
+
+			return array(
+				'title' => $item['title'] ?? $item['name'],
+				'id' => $item['id'] ?? '',
+				'role' => $item['job'] ?? '',
+				'media_type' => $item['media_type'] ?? '',
+				'release_date' => $item['release_date'] ?? $item['first_air_date'],
+				'tmdb_url' => self::create_tmdb_credit_url($item['id'], $item['media_type']),
+				'poster_thumbnail' => self::get_poster_image_url_small($item['poster_path']),
+				'episode_count' => $item['episode_count'] ?? ''
+			);
+
+		}, $raw_crew);
+
+		$processed_crew = $this->order_processed_credits_by_date($processed_crew);
+
+		return $processed_crew;
 
 	}
 

@@ -1,0 +1,40 @@
+<tr class="profile-meta__item">
+	<td class="profile-filmography__title-cell">
+
+		<h5 class="profile-filmography__title">
+
+			<a target="_blank" href="{{ tmdb_url }}">
+				{{ title }}
+			</a>
+
+			{% if media_type == 'tv' %}
+				{% if episode_count %}
+					{% if episode_count == 1 %}
+						<small>(TV Series - {{ episode_count }} Episode)</small>
+					{% else %}
+						<small>(TV Series - {{ episode_count }} Episodes)</small>
+					{% endif %}
+				{% else %}
+					<small>(TV Series)</small>
+				{% endif %}
+			{% endif %}
+
+		</h5>
+
+		{% if role %}
+			<div class="profile-filmography__details">
+				{{ role }}
+			</div>
+		{% endif %}
+
+	</td>
+
+	<td class="profile-filmography__year-cell">
+		{% if release_date %}
+			<div class="profile-filmography__year">
+				{{ release_date|date('Y') }}
+			</div>
+		{% endif %}
+	</td>
+
+</tr>

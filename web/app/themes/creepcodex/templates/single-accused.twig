@@ -201,46 +201,52 @@
 
 										{% for item in post.get_tmdb_cast_credits %}
 
-											<tr class="profile-meta__item">
-												<td class="profile-filmography__title-cell">
+											{% include 'components/filmography-table-row.twig' with {
+												title: item.title,
+												tmdb_url: item.tmdb_url,
+												role: item.role,
+												media_type: item.media_type,
+												episode_count: item.episode_count,
+												release_date: item.release_date
+											} only %}
 
-													<h5 class="profile-filmography__title">
+										{% endfor %}
 
-														<a target="_blank" href="{{ item.tmdb_url }}">
-															{{ item.title }}
-														</a>
+									</tbody>
 
-														{% if item.media_type == 'tv' %}
-															{% if item.episode_count %}
-																{% if item.episode_count == 1 %}
-																	<small>(TV Series - {{ item.episode_count }} Episode)</small>
-																{% else %}
-																	<small>(TV Series - {{ item.episode_count }} Episodes)</small>
-																{% endif %}
-															{% else %}
-																<small>(TV Series)</small>
-															{% endif %}
-														{% endif %}
+								</table>
 
-													</h5>
+							</div>
 
-													{% if item.character %}
-														<div class="profile-filmography__details">
-															{{ item.character }}
-														</div>
-													{% endif %}
+						{% endif %}
 
-												</td>
+						{% if post.get_tmdb_crew_credits %}
 
-												<td class="profile-filmography__year-cell">
-													{% if item.release_date %}
-														<div class="profile-filmography__year">
-															{{ item.release_date|date('Y') }}
-														</div>
-													{% endif %}
-												</td>
+							<div class="profile-section">
 
-											</tr>
+								<h5 class="section-heading">
+									<div class="section-heading__text">
+										Filmography
+									</div>
+									<div class="section-heading__aside">
+										as crew member
+									</div>
+								</h5>
+
+								<table class="table profile-filmography profile-filmography--crew">
+
+									<tbody>
+
+										{% for item in post.get_tmdb_crew_credits %}
+
+											{% include 'components/filmography-table-row.twig' with {
+												title: item.title,
+												tmdb_url: item.tmdb_url,
+												role: item.role,
+												media_type: item.media_type,
+												episode_count: item.episode_count,
+												release_date: item.release_date
+											} only %}
 
 										{% endfor %}
 

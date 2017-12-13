@@ -52,6 +52,14 @@ class Accused extends Post {
 
 	public function get_tmdb_crew_credits(){
 
+		if ($tmdb_url = $this->meta('tmdb_url')){
+
+			$tmdb_data = TMDBPerson::get_by_url($tmdb_url);
+
+			return $tmdb_data->get_processed_crew_credits();
+
+		}
+
 	}
 
 	public function get_open_graph_data(){
