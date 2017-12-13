@@ -586,6 +586,10 @@
 	font-family: $font-family-sans-serif;
 	font-size: $font-size-xsmall;
 	margin: 0 0 5px 0;
+	small {
+		font-size: $font-size-xsmall;
+		color: $gray;
+	}
 }
 
 .profile-filmography__year {
