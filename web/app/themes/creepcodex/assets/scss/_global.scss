@@ -66,6 +66,10 @@ a {
 	ul {
 		list-style-type: disc;
 	}
+	li {
+		line-height: $line-height-base;
+		margin-bottom: 1em;
+	}
 }
 
 /* WordPress content images default classes */
