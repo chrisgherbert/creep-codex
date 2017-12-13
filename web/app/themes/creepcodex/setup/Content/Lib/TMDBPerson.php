@@ -119,9 +119,13 @@ class TMDBPerson {
 		$key = getenv('TMDB_API_KEY');
 		$token = new ApiToken($key);
 		$client = new Client($token);
-		$api_obj = $client->getPeopleApi();
 
-		return $api_obj;
+		try {
+			$api_obj = $client->getPeopleApi();
+			return $api_obj;
+		} catch (\Exception $e) {
+			error_log($e->getMessage());
+		}
 
 	}
 
