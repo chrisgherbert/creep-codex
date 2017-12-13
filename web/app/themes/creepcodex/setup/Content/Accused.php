@@ -75,7 +75,7 @@ class Accused extends Post {
 			),
 			array(
 				'key' => 'og:description',
-				'value' => $this->content() ?? $this->meta('allegation_short')
+				'value' => strip_tags($this->post_content) ?? $this->meta('allegation_short')
 			),
 			array(
 				'key' => 'og:url',
