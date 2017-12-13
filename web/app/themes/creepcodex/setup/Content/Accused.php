@@ -28,7 +28,7 @@ class Accused extends Post {
 		}
 
 		if ($this->meta('allegation_short')){
-			$data['description'] = 'Allegation summary: ' . $this->meta('allegation_short');
+			$data['description'] = 'Allegation summary: ' . strtolower($this->meta('allegation_short'));
 		}
 		else if ($this->content()){
 			$data['description'] = $this->content();
@@ -103,7 +103,7 @@ class Accused extends Post {
 	public function get_page_title(){
 
 		if ($this->meta('allegation_short')){
-			return $this->post_title . ' - Accused of ' . $this->meta('allegation_short');
+			return $this->post_title . ' - Accused of ' . strtolower($this->meta('allegation_short'));
 		}
 		else {
 			return $this->title();

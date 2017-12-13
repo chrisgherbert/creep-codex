@@ -128,12 +128,18 @@
 
 						</div>
 
-						{% if post.content %}
+						{% if post.post_content or post.allegation_short %}
 
 							<div class="profile-section">
 
 								<article class="profile-content the-content">
-									{{ post.content }}
+
+									{% if post.post_content %}
+										{{ post.content }}
+									{% else %}
+										Accused of: {{ post.allegation_short|lower }}.
+									{% endif %}
+
 								</article>
 
 							</div>
