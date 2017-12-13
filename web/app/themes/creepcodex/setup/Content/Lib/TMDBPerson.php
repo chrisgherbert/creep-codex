@@ -51,7 +51,7 @@ class TMDBPerson {
 				'id' => $item['id'] ?? '',
 				'role' => $item['character'] ?? '',
 				'media_type' => $item['media_type'] ?? '',
-				'release_date' => $item['release_date'] ?? $item['first_air_date'],
+				'release_date' => $item['release_date'] ?? $item['first_air_date'] ?? '',
 				'tmdb_url' => self::create_tmdb_credit_url($item['id'], $item['media_type']),
 				'poster_thumbnail' => self::get_poster_image_url_small($item['poster_path']),
 				'episode_count' => $item['episode_count'] ?? ''
@@ -78,7 +78,7 @@ class TMDBPerson {
 				'id' => $item['id'] ?? '',
 				'role' => $item['job'] ?? '',
 				'media_type' => $item['media_type'] ?? '',
-				'release_date' => $item['release_date'] ?? $item['first_air_date'],
+				'release_date' => $item['release_date'] ?? $item['first_air_date'] ?? '',
 				'tmdb_url' => self::create_tmdb_credit_url($item['id'], $item['media_type']),
 				'poster_thumbnail' => self::get_poster_image_url_small($item['poster_path']),
 				'episode_count' => $item['episode_count'] ?? ''
