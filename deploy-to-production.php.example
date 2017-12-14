@@ -11,7 +11,7 @@ $apache_group = 'apache'; // ex: 'apache' or 'www-data'
 
 /** Stop editing! */
 
-$theme_directory = './web/app/themes/gropebook'; // './web/app/themes/theme_dir'
+$theme_directory = './web/app/themes/creepsheet'; // './web/app/themes/theme_dir'
 
 // Get CLI arguments
 
