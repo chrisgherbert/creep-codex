@@ -16,7 +16,7 @@ class Accused extends Post {
 		);
 
 		if ($image = $this->thumbnail()){
-			$data['image'] = $image->src('large');
+			$data['image'] = $image->src('full');
 		}
 
 		if ($this->meta('job_title')){
@@ -86,15 +86,14 @@ class Accused extends Post {
 		if ($this->thumbnail()){
 			$data[] = array(
 				'key' => 'og:image',
-				'value' => $this->thumbnail()->src('large')
+				'value' => $this->thumbnail()->src('full')
 			);
 		}
-		else {
-			$data[] = array(
-				'key' => 'og:image',
-				'value' => get_template_directory_uri() . '/assets/img/open-graph-default.png'
-			);
-		}
+
+		$data[] = array(
+			'key' => 'og:image',
+			'value' => get_template_directory_uri() . '/assets/img/open-graph-default.png'
+		);
 
 		return $data;
 
