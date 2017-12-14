@@ -1,0 +1,27 @@
+<a href="{{ link }}" class="person-card">
+
+	<div class="person-card__image" {% if image %} style="background-image: url('{{ image.src('medium') }}')" {% endif %}></div>
+
+	{% if categories %}
+
+		<div class="person-card__tag">
+			{{ categories[0] }}
+		</div>
+
+	{% endif %}
+
+	<div class="person-card__content">
+
+		<h3 class="person-card__title">
+			{{ name }}
+		</h3>
+
+		{% if subtitle %}
+			<div class="person-card__subtitle">
+				{{ subtitle }}
+			</div>
+		{% endif %}
+
+	</div>
+
+</a>

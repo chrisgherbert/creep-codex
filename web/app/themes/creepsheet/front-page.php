@@ -36,6 +36,16 @@ $context['open_graph'] = array(
 	)
 );
 
+// Featured profiles
+$context['featured'] = Timber::get_posts(
+	array(
+		'post_type' => 'any',
+		'posts_per_page' => 8,
+		'post__in' => get_option('site_options')['featured_profiles'] ?? false,
+		'order' => 'RAND'
+	)
+);
+
 // Pull in current posts
 $context['recent_accused'] = Timber::get_posts(
 	array(

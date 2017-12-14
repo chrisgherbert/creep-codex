@@ -60,6 +60,15 @@ class SiteOptions {
 		$tabs = array();
 
 		$tabs[] = array(
+			'id' => 'tab_featured',
+			'title' => 'Featured Profiles',
+			'desc' => '<p>Displayed on the home page</p>',
+			'boxes' => array(
+				'featured'
+			)
+		);
+
+		$tabs[] = array(
 			'id'    => 'tab_general',
 			'title' => 'General Info',
 			'desc'  => '<p>Address, Phone Number, etc.</p>',
@@ -98,6 +107,29 @@ class SiteOptions {
 			'key' => 'options-page',
 			'value' => array($this->options_key),
 		);
+
+		///////////////////////
+		// Featured Profiles //
+		///////////////////////
+
+		$box_key = 'featured';
+
+		$cmb = new_cmb2_box(array(
+			'id' => $box_key,
+			'title' => 'Featured Profiles',
+			'show_on' => $show_on
+		));
+
+		$cmb->add_field(array(
+			'id' => $box_key . '_profiles',
+			'name' => 'Featured Profile',
+			'type' => 'select',
+			'repeatable' => true,
+			'options_cb' => array($this, 'get_featured_profiles_options')
+		));
+
+		$cmb->object_type( 'options-page' );  // critical, see wiki for why
+		$boxes[] = $cmb;
 
 		/////////////////////////////
 		// General Information Box //
@@ -172,6 +204,36 @@ class SiteOptions {
 
 
 		return $boxes;
+
+	}
+
+	public function get_featured_profiles_options(){
+
+		$profiles = \Timber::get_posts(array(
+			'post_type' => 'accused',
+			'posts_per_page' => 2000,
+			'orderby' => 'name',
+			'order' => 'ASC'
+		));
+
+		$options = array(
+			'' => 'Choose profile'
+		);
+
+		foreach ($profiles as $profile){
+
+			if ($profile->thumbnail()){
+				$title = $profile->post_title;
+			}
+			else {
+				$title = $profile->post_title . " (no photo)";
+			}
+
+			$options[$profile->ID] = $title;
+
+		}
+
+		return $options;
 
 	}
 
