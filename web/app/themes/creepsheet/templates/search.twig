@@ -15,31 +15,41 @@
 
 {% block posts_area %}
 
-	{% if posts %}
+	<div class="section">
 
-		<div class="person-teases">
+		{% if posts %}
 
-			{% for post in posts %}
+			<div class="person-teases">
 
-				{% include 'components/person-tease.twig' with {
-					title: post.title,
-					link: post.link,
-					thumbnail: post.thumbnail,
-					job_title: post.job_title,
-					allegation_short: post.allegation_short,
-					excerpt: post.get_preview(12, '', '')
-				} only %}
+				{% for post in posts %}
 
-			{% endfor %}
+					{% include 'components/person-tease.twig' with {
+						title: post.title,
+						link: post.link,
+						thumbnail: post.thumbnail,
+						job_title: post.job_title,
+						allegation_short: post.allegation_short,
+						excerpt: post.get_preview(12, '', '')
+					} only %}
 
-		</div>
+				{% endfor %}
 
-	{% else %}
+			</div>
 
-		<div class="alert alert-danger">
-			No matches
-		</div>
+		{% else %}
 
-	{% endif %}
+			<div class="alert alert-danger">
+				<p>
+					<i class="fa fa-exclamation-circle"></i>&nbsp; No matches for "{{ query }}."
+				</p>
+			</div>
+
+			<p>
+				If you think the site is missing a public figure who has been accused of sexual assault or harassment, please <strong><a href="/submit-suggestion">submit a suggestion</a></strong>.  It will be reviewed promptly.
+			</p>
+
+		{% endif %}
+
+	</div>
 
 {% endblock %}

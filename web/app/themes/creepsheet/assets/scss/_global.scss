@@ -23,6 +23,10 @@ a {
 	transition: $transition;
 }
 
+.main {
+	min-height: 25vh; // keeps the main content area from being too small;
+}
+
 /////////////////////////
 // Bootstrap Overrides //
 /////////////////////////

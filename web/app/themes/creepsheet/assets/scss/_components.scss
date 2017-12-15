@@ -7,6 +7,12 @@
 	font-size: $font-size-small;
 }
 
+.btn-full {
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 /**
  * Icons
  */
@@ -396,6 +402,16 @@
 
 .person-tease {
 	margin-bottom: 2em;
+}
+
+.person-teases--two-col {
+	column-count: 2;
+	@include mq-small-max {
+		column-count: 1;
+	}
+	> .person-tease {
+		display: inline-block;
+	}
 }
 
 .person-tease__img {

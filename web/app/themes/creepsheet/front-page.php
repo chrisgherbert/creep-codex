@@ -42,7 +42,7 @@ $context['featured'] = Timber::get_posts(
 		'post_type' => 'any',
 		'posts_per_page' => 8,
 		'post__in' => get_option('site_options')['featured_profiles'] ?? false,
-		'order' => 'RAND'
+		'orderby' => 'post__in'
 	)
 );
 
@@ -50,7 +50,7 @@ $context['featured'] = Timber::get_posts(
 $context['recent_accused'] = Timber::get_posts(
 	array(
 		'post_type' => 'accused',
-		'posts_per_page' => 40
+		'posts_per_page' => 60
 	),
 	Content\Config::post_type_classes()
 );
