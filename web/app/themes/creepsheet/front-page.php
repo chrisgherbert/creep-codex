@@ -40,7 +40,7 @@ $context['open_graph'] = array(
 $context['featured'] = Timber::get_posts(
 	array(
 		'post_type' => 'any',
-		'posts_per_page' => 8,
+		'posts_per_page' => 12,
 		'post__in' => get_option('site_options')['featured_profiles'] ?? false,
 		'orderby' => 'post__in'
 	)
