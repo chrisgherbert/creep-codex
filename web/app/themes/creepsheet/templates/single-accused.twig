@@ -82,6 +82,17 @@
 
 						<div class="profile-meta">
 
+							{% if post.allegation_short %}
+								<div class="profile-meta__item">
+									<div class="profile-meta__key">
+										Allegations Summary:
+									</div>
+									<div class="profile-meta__value">
+										{{ post.allegation_short }}
+									</div>
+								</div>
+							{% endif %}
+
 							{% if post.aka %}
 								<div class="profile-meta__item">
 									<div class="profile-meta__key">
@@ -104,17 +115,6 @@
 								</div>
 							{% endif %}
 
-							{% if post.allegation_short %}
-								<div class="profile-meta__item">
-									<div class="profile-meta__key">
-										Allegations Summary:
-									</div>
-									<div class="profile-meta__value">
-										{{ post.allegation_short }}
-									</div>
-								</div>
-							{% endif %}
-
 							{% if post.terms('victim-gender') %}
 								<div class="profile-meta__item">
 									<div class="profile-meta__key">
@@ -122,6 +122,21 @@
 									</div>
 									<div class="profile-meta__value">
 										{{ post.terms('victim-gender')|join(', ') }}
+									</div>
+								</div>
+							{% endif %}
+
+							{% if post.terms('political-party') %}
+								<div class="profile-meta__item">
+									<div class="profile-meta__key">
+										Political Party:
+									</div>
+									<div class="profile-meta__value">
+										{% for party in post.terms('political-party') %}
+											<span class="political-party-tag {{ party|lower }}">
+												{{ party }}
+											</span>
+										{% endfor %}
 									</div>
 								</div>
 							{% endif %}
