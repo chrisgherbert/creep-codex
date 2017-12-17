@@ -50,6 +50,47 @@
 
 	{% endif %}
 
+	{% if industries %}
+
+		<div class="section">
+
+			<div class="container-fluid">
+
+				<div class="home-industries">
+
+					<h5 class="section-heading">
+						<div class="section-heading__text">
+							Popular Categories
+						</div>
+						<div class="section-heading__links">
+							<a href="/accused/" class="section-heading__link">
+								+ All Categories
+							</a>
+						</div>
+					</h5>
+
+					<div class="featured-terms">
+
+						{% for industry in industries[:5] %}
+
+							<a href="/accused/?industry={{ industry.slug }}" class="featured-term">
+								<span class="featured-term__title">
+									{{ industry.name }}
+								</span>
+							</a>
+
+						{% endfor %}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{% endif %}
+
 	{% if recent_accused %}
 
 		<div class="section">

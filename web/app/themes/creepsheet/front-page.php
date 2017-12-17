@@ -46,6 +46,15 @@ $context['featured'] = Timber::get_posts(
 	)
 );
 
+// Most popular industries
+$industries = Timber::get_terms('industry', array(
+	'hide_empty' => true,
+	'orderby' => 'count',
+	'order' => 'DESC'
+));
+
+$context['industries'] = $industries;
+
 // Pull in current posts
 $context['recent_accused'] = Timber::get_posts(
 	array(
