@@ -17,8 +17,9 @@ class CustomFields {
 	 * @var array
 	 */
 	protected $boxes = array(
+		'industry',
 		'person',
-		'accused'
+		'accused',
 	);
 
 	protected $acf_boxes = array(
@@ -57,6 +58,31 @@ class CustomFields {
 	///////////////
 	// Metaboxes //
 	///////////////
+
+	/**
+	 * Industries
+	 */
+
+	public function industry(){
+
+		$cmb2 = new_cmb2_box(array(
+			'id' => 'industry',
+			'title' => 'Extended Info',
+			'object_types' => array('term'),
+			'taxonomies' => array('industry')
+		));
+
+		$cmb2->add_field(array(
+			'id' => 'icon',
+			'name' => 'Industry Icon',
+			'desc' => 'This should be white at 25% opacity. It will be displayed offset.',
+			'type' => 'file',
+			'options' => array(
+				'url' => false
+			)
+		));
+
+	}
 
 	/**
 	 * Metabox for person content types (could include accuser/victim if added)

@@ -734,7 +734,10 @@
 	height: 150px;
 	display: flex;
 	align-items: flex-end;
+	background-repeat: no-repeat;
 	font-size: $font-size-large*0.9;
+	background-size: 100%;
+	background-position: calc(100% + 40px) calc(100% + 40px);
 	&:hover, &:active, &:focus {
 		text-decoration: none;
 		color: white;
