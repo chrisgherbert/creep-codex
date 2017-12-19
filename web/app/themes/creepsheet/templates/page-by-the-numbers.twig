@@ -11,6 +11,15 @@
 		<table class="table">
 
 			<tr>
+				<td>
+					Total Number of Accused
+				</td>
+				<td class="text-right">
+					{{ total_count }}
+				</td>
+			</tr>
+
+			<tr>
 				<td>Number of Men</td>
 				<td class="text-right">{{ male_count }}</td>
 			</tr>
@@ -24,7 +33,7 @@
 
 			<tr>
 				<td>
-					Republicans (<a href="/accused?political-party=republican">See All</a>)
+					Elected Officials - Republicans (<a href="/accused?political-party=republican">See All</a>)
 				</td>
 				<td class="text-right">
 					{{ republicans }}
@@ -33,16 +42,16 @@
 
 			<tr>
 				<td>
-					Democracts (<a href="/accused?political-party=democract">See All</a>)
+					Elected Officials - Democrats (<a href="/accused?political-party=democrat">See All</a>)
 				</td>
 				<td class="text-right">
-					{{ democracts }}
+					{{ democrats }}
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					Allegedly Victimized Females (<a href="/accused?victim-gender=female">See All</a>)
+					Allegedly Victimized Female(s) (<a href="/accused?victim-gender=female">See All</a>)
 				</td>
 				<td class="text-right">
 					{{ female_victim }}
@@ -51,7 +60,7 @@
 
 			<tr>
 				<td>
-					Allegedly Victimized Males (<a href="/accused?victim-gender=male">See All</a>)
+					Allegedly Victimized Male(s) (<a href="/accused?victim-gender=male">See All</a>)
 				</td>
 				<td class="text-right">
 					{{ male_victim }}

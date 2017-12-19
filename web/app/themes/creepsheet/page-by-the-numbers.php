@@ -28,13 +28,19 @@ function count_in_term($post_type, $taxonomy, $term_slug){
 
 // Stats
 
+// Get the total count
+$count_data = wp_count_posts('accused');
+
+// Total
+$context['total_count'] = $count_data->publish ?? 0;
+
 // Accused Gender
 $context['female_count'] = count_in_term('accused', 'accused-gender', 'female');
-$context['male_count'] = count_in_term('accused', 'accused-gender', 'male');
+$context['male_count'] = $context['total_count'] - $context['female_count'];
 
 // Parties
 $context['republicans'] = count_in_term('accused', 'political-party', 'republican');
-$context['democracts'] = count_in_term('accused', 'political-party', 'democract');
+$context['democrats'] = count_in_term('accused', 'political-party', 'democrat');
 
 // Victim Gender
 $context['female_victim'] = count_in_term('accused', 'victim-gender', 'female');
