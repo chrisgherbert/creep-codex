@@ -12,7 +12,8 @@ class Taxonomies {
 	protected $taxonomies = array(
 		'industry',
 		'victim_gender',
-		'political_party'
+		'political_party',
+		'accused_gender'
 	);
 
 	public function __construct(){
@@ -33,6 +34,27 @@ class Taxonomies {
 	////////////////
 	// Taxonomies //
 	////////////////
+
+	public function accused_gender(){
+
+		register_via_taxonomy_core(
+			array(
+				'Accused Gender',
+				'Accused Genders',
+				'accused-gender'
+			),
+			array(
+				'hierarchical' => true, // "true" for category-like interface, "false" for tag-link interface,
+				'show_ui' => true,
+				'show_admin_column' => true,
+				'query_var' => true
+			),
+			array(
+				'accused'
+			)
+		);
+
+	}
 
 	public function political_party(){
 
