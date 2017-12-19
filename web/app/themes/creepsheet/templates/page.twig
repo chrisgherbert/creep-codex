@@ -10,9 +10,13 @@
 				{{ post.title }}
 			</h1>
 
-			<div class="page-content the-content">
-				{{ post.content }}
-			</div>
+			{% block page_content %}
+
+				<div class="page-content the-content">
+					{{ post.content }}
+				</div>
+
+			{% endblock %}
 
 		</div>
 

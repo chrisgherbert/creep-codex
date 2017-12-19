@@ -1,0 +1,65 @@
+{% extends 'page.twig' %}
+
+{% block page_content %}
+
+	<div class="page-content the-content">
+
+		{{ post.content }}
+
+		<hr />
+
+		<table class="table">
+
+			<tr>
+				<td>Number of Men</td>
+				<td class="text-right">{{ male_count }}</td>
+			</tr>
+
+			<tr>
+				<td>
+					Number of Women (<a href="/accused?accused-gender=female">See All</a>)
+				</td>
+				<td class="text-right">{{ female_count }}</td>
+			</tr>
+
+			<tr>
+				<td>
+					Republicans (<a href="/accused?political-party=republican">See All</a>)
+				</td>
+				<td class="text-right">
+					{{ republicans }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Democracts (<a href="/accused?political-party=democract">See All</a>)
+				</td>
+				<td class="text-right">
+					{{ democracts }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Allegedly Victimized Females (<a href="/accused?victim-gender=female">See All</a>)
+				</td>
+				<td class="text-right">
+					{{ female_victim }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Allegedly Victimized Males (<a href="/accused?victim-gender=male">See All</a>)
+				</td>
+				<td class="text-right">
+					{{ male_victim }}
+				</td>
+			</tr>
+
+		</table>
+
+	</div>
+
+{% endblock %}
