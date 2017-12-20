@@ -40,6 +40,10 @@ class Accused extends Post {
 
 	public function get_meta_description(){
 
+		if ($this->post_content){
+			return strip_tags($this->post_content);
+		}
+
 		$text = $this->title();
 
 		if ($job = $this->meta('job_title')){
