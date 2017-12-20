@@ -38,6 +38,24 @@ class Accused extends Post {
 
 	}
 
+	public function get_meta_description(){
+
+		$text = $this->title();
+
+		if ($job = $this->meta('job_title')){
+			$job = strtolower($job);
+			$text .= " ($job)";
+		}
+
+		if ($summary = $this->meta('allegation_short')){
+			$summary = strtolower($summary);
+			$text .= " was accused of $summary";
+		}
+
+		return $text;
+
+	}
+
 	public function get_tmdb_cast_credits(){
 
 		if ($tmdb_url = $this->meta('tmdb_url')){

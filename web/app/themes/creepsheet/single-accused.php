@@ -13,6 +13,8 @@ $context['schema'] = $post->get_schema();
 $context['open_graph'] = $post->get_open_graph_data();
 // Twitter Cards
 $context['twitter_cards'] = $post->get_twitter_card_data();
+// Meta description
+$context['meta_description'] = $post->get_meta_description();
 
 $context['more_accused'] = Timber::get_posts(
 	array(
