@@ -38,6 +38,20 @@ class Accused extends Post {
 
 	}
 
+	public function get_industries_links_string(){
+
+		if ($industries = $this->terms('industry')){
+
+			$links =  array_map(function($item){
+				return '<a href="/accused/?industry=' . $item->slug . '">' . $item->name .'</a>';
+			}, $industries);
+
+			return implode(', ', $links);
+
+		}
+
+	}
+
 	public function get_meta_description(){
 
 		if ($this->post_content){

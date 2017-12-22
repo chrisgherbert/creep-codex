@@ -110,7 +110,7 @@
 										Industry:
 									</div>
 									<div class="profile-meta__value">
-										{{ post.terms('industry')|join(', ') }}
+										{{ post.get_industries_links_string }}
 									</div>
 								</div>
 							{% endif %}
