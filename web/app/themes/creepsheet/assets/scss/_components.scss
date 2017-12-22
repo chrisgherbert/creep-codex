@@ -701,11 +701,22 @@
 	line-height: 11px;
 	letter-spacing: 0.5px;
 	margin-left: 5px;
+	&:hover, &:active, &:focus {
+		color: white;
+		text-decoration: none;
+		background-color: darken($gray-light, 10%);
+	}
 	&.democrat {
 		background-color: #3498db;
+		&:hover {
+			background-color: darken(#3498db, 10%);
+		}
 	}
 	&.republican {
 		background-color: #e74c3c;
+		&:hover {
+			background-color: darken(#e74c3c, 10%);
+		}
 	}
 }
 

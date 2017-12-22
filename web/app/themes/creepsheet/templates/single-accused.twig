@@ -1,5 +1,7 @@
 {% extends 'single.twig' %}
 
+{% block single_header %}{% endblock %}
+
 {% block single_main_content %}
 
 	<div class="profile-main-content">
@@ -133,9 +135,9 @@
 									</div>
 									<div class="profile-meta__value">
 										{% for party in post.terms('political-party') %}
-											<span class="political-party-tag {{ party|lower }}">
+											<a href="/accused/?political-party={{ party.slug }}" class="political-party-tag {{ party|lower }}">
 												{{ party }}
-											</span>
+											</a>
 										{% endfor %}
 									</div>
 								</div>
