@@ -478,6 +478,32 @@
 }
 
 /**
+ * Single Post
+ */
+
+.single-header {
+	border-bottom: 4px solid $gray-lighter;
+}
+
+.single-overline {
+	text-transform: uppercase;
+	font-size: $font-size-small;
+	margin-bottom: $spacing/6;
+}
+
+.single-title {
+	margin: 0 0 $spacing/2 0;
+}
+
+.single-meta__item {
+	font-size: $font-size-small;
+	display: inline-block;
+	&:not(:last-child){
+		margin-right: $spacing/4;
+	}
+}
+
+/**
  * Single Profile
  */
 
@@ -639,7 +665,6 @@
 	}
 	&.active {
 		background-color: $brand-primary;
-		background-color: black;
 	}
 }
 

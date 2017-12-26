@@ -8,6 +8,8 @@ class AdminCustomize {
 
 		// add_action('login_head', array($this, 'custom_login_logo');
 
+		add_action('init', array($this, 'change_default_post_type_labels'));
+
 	}
 
 	/**
@@ -22,6 +24,15 @@ class AdminCustomize {
 		 pointer-events: none;
 		}
 		</style>';
+	}
+
+	public function change_default_post_type_labels(){
+
+		global $wp_post_types;
+		$labels = &$wp_post_types['post']->labels;
+		$labels->name = 'Blog Posts';
+		$labels->singular_name = 'Blog Post';
+
 	}
 
 
