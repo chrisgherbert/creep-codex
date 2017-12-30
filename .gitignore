@@ -26,3 +26,4 @@ deploy-to-*.php
 .DS_Store
 /.phpintel
 
+*.csv
