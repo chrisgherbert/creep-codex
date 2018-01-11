@@ -33,24 +33,6 @@
 
 			<tr>
 				<td>
-					Candidates &amp; Elected Officials - Republicans (<a href="/accused?political-party=republican">See All</a>)
-				</td>
-				<td class="text-right">
-					{{ republicans }}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					Candidates &amp; Elected Officials - Democrats (<a href="/accused?political-party=democrat">See All</a>)
-				</td>
-				<td class="text-right">
-					{{ democrats }}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
 					Allegedly Victimized Female(s) (<a href="/accused?victim-gender=female">See All</a>)
 				</td>
 				<td class="text-right">
@@ -66,6 +48,27 @@
 					{{ male_victim }}
 				</td>
 			</tr>
+
+		</table>
+
+		<hr />
+
+		<p>
+			<strong>
+				Candidates &amp; Elected Officals - By Political Party
+			</strong>
+		</p>
+
+		<table class="table">
+
+			{% for party in political_parties %}
+
+				<tr>
+					<td>{{ party }} (<a href="/accused?political-party={{ party.slug }}">See All</a>)</td>
+					<td class="text-right">{{ party.count }}</td>
+				</tr>
+
+			{% endfor %}
 
 		</table>
 

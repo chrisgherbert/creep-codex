@@ -9,6 +9,12 @@
 				(page {{ pagination.current }})
 			</div>
 		{% endif %}
+		{% if political_party %}
+			<small>
+				<br />
+				Political Party: {{ political_party }}
+			</small>
+		{% endif %}
 	</h1>
 
 {% endblock %}

@@ -21,6 +21,11 @@ if ( is_day() ) {
 	$context['title'] = post_type_archive_title( '', false );
 }
 
+if (isset($_GET['political-party'])) {
+	$term_obj = get_term_by('slug', $_GET['political-party'], 'political-party');
+	$context['political_party'] = Timber::get_term($term_obj);
+}
+
 $context['industries'] = Timber::get_terms('industry');
 $context['orders'] = array(
 	'name' => 'Name',

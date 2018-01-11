@@ -46,4 +46,11 @@ $context['democrats'] = count_in_term('accused', 'political-party', 'democrat');
 $context['female_victim'] = count_in_term('accused', 'victim-gender', 'female');
 $context['male_victim'] = count_in_term('accused', 'victim-gender', 'male');
 
+// Poltical Parties
+$context['political_parties'] = Timber::get_terms(array(
+	'taxonomy' => 'political-party',
+	'orderby' => 'count',
+	'order' => 'desc'
+));
+
 Timber::render( array( 'page-' . $post->post_name . '.twig', 'page.twig' ), $context );
