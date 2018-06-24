@@ -27,14 +27,26 @@ class TMDBPerson {
 		}
 
 		// Get data from TMDB API
-		$data = $this->api_obj->getCombinedCredits($this->id);
 
-		// Set transient using lifetime set in environment variable
-		set_transient($this->get_transient_key(), $data, getenv('TMDB_CACHE_LIFETIME'));
+		try {
 
-		$this->combined_credits = $data;
+			$data = $this->api_obj->getCombinedCredits($this->id);
 
-		return $this->combined_credits;
+		} catch (\Exception $e) {
+			error_log('TMDB API error: ' . $e->getMessage() );
+			return false;
+		}
+
+		if (isset($data) && $data){
+
+			// Set transient using lifetime set in environment variable
+			set_transient($this->get_transient_key(), $data, getenv('TMDB_CACHE_LIFETIME'));
+
+			$this->combined_credits = $data;
+
+			return $this->combined_credits;
+
+		}
 
 	}
 

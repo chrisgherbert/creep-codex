@@ -79,7 +79,6 @@ class Accused extends Post {
 		if ($tmdb_url = $this->meta('tmdb_url')){
 
 			$tmdb_data = TMDBPerson::get_by_url($tmdb_url);
-
 			return $tmdb_data->get_processed_cast_credits();
 
 		}
