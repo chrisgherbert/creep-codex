@@ -9,6 +9,9 @@ $context['post'] = $post;
 
 // Schema
 $context['schema'] = $post->get_schema();
+// Disable Yoast SEO's default schema data
+add_filter( 'wpseo_json_ld_output', '__return_false' );
+
 // Open Graph
 $context['open_graph'] = $post->get_open_graph_data();
 // Twitter Cards
