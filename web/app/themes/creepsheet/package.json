@@ -1,33 +1,27 @@
 {
-  "name": "timberTheme",
+  "name": "creepsheet",
   "version": "1.0.0",
-  "private": true,
+  "description": "To get started with Timber Theme, follow the steps below:",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
-    "bower": "bower install"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "bootstrap-sass": "^3.4.3",
+    "font-awesome": "^4.7.0",
+    "fontawesome-4.7": "^4.7.0",
+    "laravel-mix": "^6.0.49",
+    "smooth-scroll": "^16.1.3"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "browser-sync": "^2.9.8",
-    "del": "^2.2.2",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^4.0",
-    "gulp-bower": "^0.0.13",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.0",
-    "gulp-eslint": "^3.0",
-    "gulp-if": "^2.0",
-    "gulp-load-plugins": "^1.5",
-    "gulp-notify": "^3.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^2.1",
-    "yargs": "^8.0"
-  },
-  "browserslist": [
-    "last 2 versions",
-    ">1%"
-  ]
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.56.1",
+    "sass-loader": "^12.6.0"
+  }
 }

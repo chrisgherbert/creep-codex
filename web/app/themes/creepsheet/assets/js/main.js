@@ -4,6 +4,8 @@
  * User devvars.js and gulpvars.js files to modify Gulp variables
  */
 
+import SmoothScroll from "smooth-scroll";
+
 (function($, global) {
 
 	"use strict";
@@ -84,7 +86,9 @@
 		ui: function() {
 
 			/* Smooth scrolling */
-			$("a[href^='#']").smoothScroll();
+			var scroll = new SmoothScroll('a[href*="#"]', {
+				ignore: '.no-smooth'
+			});
 
 		}
 

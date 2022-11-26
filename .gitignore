@@ -29,3 +29,4 @@ deploy-to-*.php
 *.csv
 /web/app/themes/twentytwentytwo
 /web/app/themes/twentytwentythree
+/web/app/themes/creepsheet/dist
