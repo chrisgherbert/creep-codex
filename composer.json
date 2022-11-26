@@ -12,7 +12,10 @@
     }
   ],
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true
+    }
   },
   "repositories": [
     {
@@ -34,22 +37,6 @@
     {
       "type": "git",
       "url": "https://github.com/bermanco/wordpress-image-download.git"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.6.4",
-        "type": "wordpress-plugin",
-        "dist": {
-          "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
-        },
-        "require": {
-          "philippbaschke/acf-pro-installer": "^1.0",
-          "composer/installers": "^1.0"
-        }
-      }
     }
   ],
   "require": {
@@ -65,7 +52,6 @@
     "webdevstudios/cmb2": "2.2.4",
     "webdevstudios/cpt-core": "^1.0",
     "webdevstudios/taxonomy_core": "^0.2.4",
-    "advanced-custom-fields/advanced-custom-fields-pro": "^5.6",
     "embed/embed": "^3.2",
     "addwiki/mediawiki-api": "^0.7.1",
     "php-tmdb/api": "^2.1",
