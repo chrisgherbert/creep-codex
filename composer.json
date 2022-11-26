@@ -52,10 +52,11 @@
     "webdevstudios/cmb2": "2.2.4",
     "webdevstudios/cpt-core": "^1.0",
     "webdevstudios/taxonomy_core": "^0.2.4",
-    "embed/embed": "^3.2",
+    "embed/embed": "^3.4.17",
     "addwiki/mediawiki-api": "^0.7.1",
     "php-tmdb/api": "^2.1",
-    "league/csv": "^8.2"
+    "league/csv": "^8.2",
+    "laminas/laminas-diactoros": "^2.17"
   },
   "extra": {
     "installer-paths": {
