@@ -27,3 +27,5 @@ deploy-to-*.php
 /.phpintel
 
 *.csv
+/web/app/themes/twentytwentytwo
+/web/app/themes/twentytwentythree
